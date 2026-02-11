@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
         } else {
             x = atoi(argv[i]);
             enqueue_struct(&q, x);
-            printf("enqueing %d\n", x);
+          //  printf("enqueing %d\n", x);
         }
     }
     
