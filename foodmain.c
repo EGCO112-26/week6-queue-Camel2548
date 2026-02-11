@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
 
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "x") == 0) {
-            // ระบบชำระเงินเมื่อเจอ "x"
+            // bill
             if (q.size > 0) {
                 dequeue_struct(&q, customer_count);
                 customer_count++;
@@ -26,14 +26,14 @@ int main(int argc, char **argv) {
                 printf("No customer in queue.\n");
             }
         } else {
-            // รับค่า menu_id และ quantity (สมมติให้ quantity เป็นตัวถัดไป หรือถ้าไม่มีให้เป็น 1)
+            // menu aaa  quantity
             int menu_id = atoi(argv[i]);
             int qty = 1;
             
-            // ตรวจสอบว่ามี parameter จำนวน (quantity) ถัดจาก id ไหม
+            
             if (i + 1 < argc && strcmp(argv[i+1], "x") != 0) {
                 qty = atoi(argv[i+1]);
-                i++; // เลื่อน index ข้ามตัว quantity ไป
+                i++; 
             }
             
             enqueue_struct(&q, menu_id, qty);
@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
     printf("==========================================\n");
     printf("There are %d ppl left in the queue\n", q.size);
 
-    // 5. เคลียร์คิวก่อนจบโปรแกรม (Free memory)
+    // clearmem
     while (q.size > 0) {
         OrderNode *temp = q.head;
         q.head = q.head->next;

@@ -5,20 +5,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-// โครงสร้าง Node ตามโจทย์ (ใช้ชื่อ Node เพื่อไม่ให้ซ้ำกับ Queue)
+
 typedef struct node {
     struct node* next;
-    int order_number; // รหัสเมนู
-    int q;            // จำนวน (quantity)
+    int order_number; // namemenu
+    int q;            // quantitu
 } OrderNode;
 
-// โครงสร้าง Queue
+
 typedef struct {
     OrderNode *head, *tail;
     int size;
 } Queue;
 
-// ฟังก์ชันสำหรับ Enqueue (สั่งอาหาร)
+
 void enqueue_struct(Queue* q, int menu_id, int qty) {
     OrderNode *new_node = (OrderNode*) malloc(sizeof(OrderNode));
     if (new_node) { 
@@ -37,8 +37,8 @@ void enqueue_struct(Queue* q, int menu_id, int qty) {
     }
 }
 
-// ฟังก์ชันสำหรับ Dequeue และจัดการระบบชำระเงิน
-int dequeue_struct(Queue *q, int customer_count) {
+
+int dequeue_struct(Queue *q, int customer_count) { //dequeue
     OrderNode *t = q->head;
     if (t) {
         int menu_id = t->order_number;
@@ -46,7 +46,7 @@ int dequeue_struct(Queue *q, int customer_count) {
         int price = 0;
         char menu_name[50];
 
-        // กำหนดเมนูและราคา
+        
         switch(menu_id) {
             case 1: strcpy(menu_name, "Kraprow Mookrob"); price = 70 * qty; break;
             case 2: strcpy(menu_name, "Koong Maenam"); price = 2000 * qty; break;
@@ -71,7 +71,7 @@ int dequeue_struct(Queue *q, int customer_count) {
             printf("Change is:%d\n", cash - price);
         }
 
-        // จัดการ Linked List
+        
         q->head = t->next;
         if (q->head == NULL) q->tail = NULL;
         
